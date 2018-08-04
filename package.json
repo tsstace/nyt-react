@@ -1,0 +1,26 @@
+{
+  "name": "nyt-react",
+  "version": "0.1.0",
+  "homepage": "http://tsstace.github.io/nyt-react",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "gh-pages": "^1.2.0",
+    "mongodb": "^3.1.1",
+    "mongoose": "^5.2.6",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
