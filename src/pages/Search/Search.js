@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import DeleteBtn from "../../components/DeleteBtn";
-import Jumbotron from "../../components/Jumbotron";
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import { Input, FormBtn } from "../../components/Form";
 import API from "../../utils/API";
 import SaveBtn from "../../components/SaveBtn";
 
@@ -28,15 +25,21 @@ class Search extends Component {
         .catch( err => console.log(err));
   };
 
-  saveArticleSubmit = (headline, link, date) => {
-    console.log("Working");
+ saveArticleSubmit = (headline, link, date) => {
+ //  console.log("Working");
       API.saveArticle({
         headline: headline,
         link: link,
         date: date
       })
         .then(res => console.log("saved article"))
-        .catch(err => console.log(err));
+        .then(res => this.getArticles())
+        .catch(err => console.log(err))
+      };
+
+  saveArticleSubmit = id => {
+  const article = this.state.articles.find(article => article._id === id);
+  API.saveArticle(article).then(res => this.getArticles());
   };
 
   handleInputChange = event => {
@@ -98,17 +101,17 @@ class Search extends Component {
                         link={article.web_url}
                         date={article.pub_date}
                       >
-                        <SaveBtn onClick={() => this.saveArticleSubmit(article.headline.main, article.web_url, article.pub_date)} />
+                      <SaveBtn onClick={() => this.saveArticleSubmit(article.headline.main, article.web_url, article.pub_date)} />
                       </ListItem>))}
                   </List>
                 </div>
               </div>
               ) : (
               <ul className="list-group">
-                <li className="list-group-item"><h3><em>Enter Search Term to Begin</em></h3></li>
+                <li className="list-group-item"><h3><em>Enter a topic to begin searching:</em></h3></li>
               </ul>)
             }
-          </Col>
+              </Col>
         </Row>
       </Container>
     );

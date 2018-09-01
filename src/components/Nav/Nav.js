@@ -18,7 +18,7 @@ const Nav = () =>
           <span className="icon-bar" />
         </button>
         <a style={style.navBar} href="/" className="navbar-brand">
-          NYT-React
+          "New York Times" - React scraper
         </a>
       </div>
       <div className="collapse navbar-collapse navbar-ex1-collapse">

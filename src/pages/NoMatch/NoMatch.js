@@ -9,9 +9,7 @@ const NoMatch = () =>
         <Jumbotron>
           <h1>404 Page Not Found</h1>
           <h1>
-            <span role="img" aria-label="Face With Rolling Eyes Emoji">
-              🙄
-            </span>
+            There was no match on that article.
           </h1>
         </Jumbotron>
       </Col>

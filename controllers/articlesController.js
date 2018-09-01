@@ -4,15 +4,21 @@ const db = require("../models");
 module.exports = {
   findAll: function(req, res) {
     db.Article
-      .find({})
+      .find(req.query)
+      // .select('???')
+      // .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    console.log("create function");
+    const article = {
+      _id: req.body._id,
+      headline: req.body.headline,
+      link: req.body.link
+    };
     db.Article
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
+      .create(article)
+      .then(dbArticle => res.json(dbArticle))
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
